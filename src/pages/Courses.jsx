@@ -29,8 +29,6 @@ export default function CoursesPage() {
     const interval = setInterval(fetchQuote, 30000);
     return () => clearInterval(interval);
   }, []);
-  console.log(quote);
-
   return (
     <main className="main">
       <div className="container-top">
@@ -40,9 +38,9 @@ export default function CoursesPage() {
             <p>- {quote.author}</p>
           </div>
         )}
-              </div>
+      </div>
 
-        <header className="topbar">
+      <header className="topbar">
         <div className="search">
           <input
             placeholder="Search courses or professors"
@@ -58,9 +56,9 @@ export default function CoursesPage() {
           <img src="https://i.pravatar.cc/40" alt="user" />
         </div>
       </header>
-      
 
       <section className="content">
+        {currentData.length === 0 && (<p>No courses found.</p>)}
         <div className="grid">
           {currentData.map((c, i) => (
             <CourseCard key={i} c={c} i={i} />
